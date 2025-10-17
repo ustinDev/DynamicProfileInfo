@@ -9,11 +9,11 @@ RUN dotnet restore
 
 # copy everything else and build app
 COPY . .
-RUN dotnet publish -c Release -o /app --no-restore
+RUN dotnet publish -c Release -o ./app --no-restore
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app ./
+COPY --from=build ./app ./
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "ProfileInfo.dll"]
