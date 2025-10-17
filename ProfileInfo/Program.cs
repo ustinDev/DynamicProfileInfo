@@ -99,5 +99,12 @@ app.Use(async (context, next) =>
 
 app.MapControllers();
 
-app.Run();
+var port = Environment.GetEnvironmentVariable("PORT");
+var aspnetUrls = Environment.GetEnvironmentVariable("ASPNETCORE_URLS");
+var listenPort = port ?? (aspnetUrls is not null ? new Uri(aspnetUrls.Split(';')[0]).Port.ToString() : null) ?? "8080";
+var url = $"http://0.0.0.0:{listenPort}";
+Console.WriteLine($"Starting server on {url}");
+
+
+app.Run(url);
 
