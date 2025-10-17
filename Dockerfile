@@ -5,7 +5,7 @@ WORKDIR /source
 # copy csproj and restore as distinct layers
 COPY *.sln .
 COPY ./ProfileInfo/*.csproj ./
-RUN dotnet restore ./ProfileInfo.sln
+RUN dotnet restore DynamicProfileInfo.sln
 
 # copy everything else and build app
 COPY ./ProfileInfo .
