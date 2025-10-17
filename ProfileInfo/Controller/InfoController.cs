@@ -30,7 +30,7 @@ namespace ProfileInfo.Controllers
                     user = new
                     {
                         email = "ustinsteve@gmail.com",
-                        name = "Steve",
+                        name = "Stephen Odiase",
                         stack = "C# / ASP.NET Core"
                     },
                     timestamp = DateTime.UtcNow.ToString("o"), // ISO-8601 UTC
