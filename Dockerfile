@@ -11,7 +11,7 @@ RUN dotnet restore DynamicProfileInfo.sln
 
 # copy everything else and build app
 COPY ./ProfileInfo ./ProfileInfo 
-RUN dotnet publish -c Release -o /app --no-restore
+RUN dotnet publish -c Release -o /app --no-restore DynamicProfileInfo.sln
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
