@@ -4,11 +4,13 @@ WORKDIR /source
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
-COPY ./ProfileInfo/*.csproj ./
+COPY ./ProfileInfo/*.csproj ./ProfileInfo
+COPY ./ProfileInfo/*.csproj .
 RUN dotnet restore DynamicProfileInfo.sln
 
 # copy everything else and build app
-COPY ./ProfileInfo .
+RUN mkdir ProfileInfo
+COPY ./ProfileInfo ./ProfileInfo 
 RUN dotnet publish -c Release -o /app --no-restore
 
 # final stage/image
